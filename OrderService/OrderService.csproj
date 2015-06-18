@@ -69,6 +69,10 @@
     <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_Data\OrderManagement.mdf" />
+    <Content Include="App_Data\OrderManagement_log.ldf">
+      <DependentUpon>OrderManagement.mdf</DependentUpon>
+    </Content>
     <Content Include="Service1.svc" />
     <Content Include="Web.config" />
   </ItemGroup>
@@ -100,9 +104,7 @@
     <Compile Include="IService1.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="App_Data\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <EntityDeploy Include="OrderManagementModel.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
