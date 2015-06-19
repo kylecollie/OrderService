@@ -1,0 +1,159 @@
+﻿<html data-ng-app="RESTClientModule">
+@{
+    ViewBag.Title = "AngularJs /  WCF and Master Detail Grid";
+}
+
+
+<body>
+    <img src="~/Images/blank.gif" alt="" width="1" height="10" />
+    <table width="99%" style=" border-bottom:3px solid #3273d5;">
+        <tr>
+
+            <td width=" 250">
+                <table width="99%">
+                    <tr>
+                        <td>
+                            Welcome Mr. {{'Collie'}} .
+
+                        </td>
+
+
+                    </tr>
+                </table>
+            </td>
+            <td class="style1" align="center">
+                <h3>Order Master / Detail Grid using Angular JS and WCF in MVC :)</h3>
+
+
+            </td>
+            <td align="right">
+                <div ng-controller="AngularJs_WCFController">
+                    Today Date is :
+                    {{date | date:'yyyy-MM-dd'}}
+                </div>
+
+            </td>
+        </tr>
+    </table>
+    <img src="~/Images/blank.gif" alt="" width="1" height="10" />
+
+
+
+    <table id="tblContainer" data-ng-controller="AngularJs_WCFController" style='width: 99%;table-layout:fixed;'>
+
+        <tr>
+
+            <td>
+                <table style=" background-color:#ECF3F4; border: solid 2px #3273d5; padding: 5px;width: 99%;table-layout:fixed;">
+
+                    <tr style="height: 30px; background-color:#336699 ; color:#FFFFFF ;">
+
+                        <th width="60"></th>
+
+                        <th>Order No</th>
+
+                        <th>Table ID</th>
+
+                        <th>Notes</th>
+
+                        <th>Order DATE</th>
+
+                        <th>Waiter Name</th>
+
+
+
+                        <th></th>
+
+                    </tr>
+
+                    <tbody data-ng-repeat="order in OrderMastersDisp">
+
+                        <tr>
+
+                            <td width="60">
+                                <input type="button" id="Detail" value="Detail" data-ng-click="get(order)" />
+
+                            </td>
+
+                            <td><span>{{order.Order_No}}</span></td>
+
+                            <td><span>{{order.Table_ID}}</span></td>
+
+                            <td><span>{{order.Description}}</span></td>
+
+                            <td><span>{{order.Order_DATE}}</span></td>
+
+                            <td><span>{{order.Waiter_Name}}</span></td>
+
+
+
+                            <td></td>
+
+
+
+                        </tr>
+                        <tr id={{order.Order_No}} ng-hide="order.isRowHidden" ng-init="get(order)">
+
+                            <td>  </td>
+                            <td colspan="6">
+
+                                <table style=" background-color:#ECF3F4; border: solid 2px #3273d5; padding: 5px;width: 99%;table-layout:fixed;">
+
+                                    <tr style="height: 30px; background-color:#336699 ; color:#FFFFFF ;">
+
+                                        <th>Order No</th>
+
+                                        <th>Order Detail No</th>
+
+                                        <th>Item Name</th>
+
+                                        <th>Comments</th>
+
+                                        <th>QTY</th>
+
+                                        <th>Price</th>
+
+                                    </tr>
+
+                                    <tbody data-ng-repeat="detail in OrderDetailDisp">
+
+                                        <tr>
+
+
+
+                                            <td><span>{{detail.Order_No}}</span></td>
+
+                                            <td><span>{{detail.Order_Detail_No}}</span></td>
+
+                                            <td><span>{{detail.Item_Name}}</span></td>
+
+                                            <td><span>{{detail.Notes}}</span></td>
+
+                                            <td><span>{{detail.QTY}}</span></td>
+
+                                            <td><span>{{detail.Price}}</span></td>
+
+                                        </tr>
+                                    </tbody>
+
+                                </table>
+                            </td>
+
+                        </tr>
+
+                    </tbody>
+
+                </table>
+            </td>
+
+        </tr>
+
+    </table>
+
+</body>
+
+</html>
+<script src="~/Scripts/angular.js"></script>
+<script src="~/Scripts/KCAngular/Modules.js"></script>
+<script src="~/Scripts/KCAngular/Services.js"></script>
+<script src="~/Scripts/KCAngular/Controller.js"></script>
